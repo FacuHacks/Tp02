@@ -1,7 +1,6 @@
 class Dado extends GameObject {
   int valor;
   boolean mostrado; 
-  
   Dado(float x, float y) {
     super(x, y);
     this.valor = 0; 
@@ -9,6 +8,5 @@ class Dado extends GameObject {
   }
   
   void display() {
-    // Implementación para dibujar el dado
   }
 }

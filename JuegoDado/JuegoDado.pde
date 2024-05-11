@@ -1,8 +1,8 @@
-Dado dado;
-Tablero tablero;
+Dado dado; 
+HUD hud;
 boolean dibujarImagen = false;
 int posicionAleatoria;
-int[] valoresDados = new int[20];
+int[] valoresDados = new int[5];
 boolean[] dadoMostrado = new boolean[6];
 
 void setup() {
@@ -10,7 +10,7 @@ void setup() {
   textSize(50);
   textAlign(CENTER, CENTER);
   dado = new Dado(width / 1.4, height / 8);
-  tablero = new Tablero(0, 0);
+hud = new HUD(0, 0);
 }
 
 void draw() {
@@ -32,7 +32,6 @@ void draw() {
       posY1 = esquinaY + lado / 2;
       generarTexto1("Uno", width - 80, 50);
       if (!dadoMostrado[0]) {
-        println("Dado 1");
         dadoMostrado[0] = true;
       }
     } else if (posicionAleatoria == 1) {
@@ -42,7 +41,6 @@ void draw() {
       posY3 = esquinaY + lado / 1.3;
       generarTexto1("Dos", width - 80, 50);
       if (!dadoMostrado[1]) {
-        println("Dado 2");
         dadoMostrado[1] = true;
       }
     } else if (posicionAleatoria == 2) {
@@ -54,7 +52,6 @@ void draw() {
       posY3 = esquinaY + lado / 1.3;
       generarTexto1("Tres", width - 80, 50);
       if (!dadoMostrado[2]) {
-        println("Dado 3");
         dadoMostrado[2] = true;
       }
     } else if (posicionAleatoria == 3) {
@@ -68,7 +65,6 @@ void draw() {
       posY6 = esquinaY + lado / 4.2;
       generarTexto1("Cuatro", width - 80, 50);
       if (!dadoMostrado[3]) {
-        println("Dado 4");
         dadoMostrado[3] = true;
       }
     } else if (posicionAleatoria == 4) {
@@ -84,7 +80,6 @@ void draw() {
       posY1 = esquinaY + lado / 2;
       generarTexto1("Cinco", width - 80, 50);
       if (!dadoMostrado[4]) {
-        println("Dado 5");
         dadoMostrado[4] = true;
       }
     } else if (posicionAleatoria == 5) {
@@ -102,7 +97,6 @@ void draw() {
       posY3 = esquinaY + lado / 1.3;
       generarTexto1("Seis", width - 80, 50);
       if (!dadoMostrado[5]) {
-        println("Dado 6");
         dadoMostrado[5] = true;
       }
     }
@@ -144,13 +138,13 @@ void generarTexto1(String texto, float x, float y) {
 
 void dibujarDados() {
   println("Últimos valores obtenidos:");
-  int startIndex = max(valoresDados.length - 10, 0); //Muestra hasta 10 :)
+  int startIndex = max(valoresDados.length - 5, 0); //Muestra hasta 10 :)
   for (int i = startIndex; i < valoresDados.length; i++) {
     println(valoresDados[i]);
   }
 }
 
-void agregarValorDado(int valor) {
+public void agregarValorDado(int valor) {
   for (int i = valoresDados.length - 1; i > 0; i--) {
     valoresDados[i] = valoresDados[i - 1];
   }
@@ -164,7 +158,7 @@ void reiniciarDadoMostrado() {
 }
 
 void borrarLista() {
-  println("Lista borrada (ultimo valor obtenido).");
+  println("Lista borrada.");
   for (int i = 0; i < dadoMostrado.length; i++) {
     dadoMostrado[i] = false;
   }
